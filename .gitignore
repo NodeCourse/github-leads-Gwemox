@@ -59,3 +59,9 @@ typings/
 
 # next.js build output
 .next
+
+# On ignore l'IDE
+.idea/
+
+# Ne pas pousser notre token :')
+token.txt
