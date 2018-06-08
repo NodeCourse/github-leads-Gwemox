@@ -65,3 +65,6 @@ typings/
 
 # Ne pas pousser notre token :')
 token.txt
+
+# On va pas envoyer la liste de users quand même :/
+users.csv
