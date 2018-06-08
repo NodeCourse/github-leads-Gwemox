@@ -5,6 +5,7 @@ const getStargazersForRepo = require('./getStargazersForRepo');
 const flatten = require('array-flatten');
 const csv = require('csv-stringify');
 const fs = require('fs');
+const path = require('path');
 
 program
     .version('0.1.0')
@@ -30,7 +31,10 @@ if (program.token && program.output) {
                 .then(stargazers => stargazers.map(stargazer => [stargazer.starred_at, stargazer.user.id, stargazer.user.login, stargazer.user.url]))
                 .then(stargazers => {
                     csv(stargazers, (err, output) => {
-                        fs.writeFile(program.output, output, (err) => {if (err) throw err});
+                        fs.writeFile(program.output, output, (err) => {
+                            if (err) throw err
+                            console.log(`CSV successfully  saved at ${path.resolve(program.output)}`)
+                        });
                     });
                 })
                 .catch(err => console.error(err));
